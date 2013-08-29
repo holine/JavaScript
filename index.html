@@ -2,7 +2,7 @@
 <HTML>
 <HEAD>
 <meta http-equiv=Content-Type content="text/html;charset=utf-8">
-<script type="text/javascript" src="holine.js"></script>
+<script type="text/javascript" src="map.js"></script>
 <style type="text/css">
 body {
 	padding: 0;
@@ -11,9 +11,166 @@ body {
 </style>
 </HEAD>
 <body>
-<IFRAME src="http://news.163.com/special/qingsongyike/" style="height:40040px; width:100%; border:none;"></IFRAME>
-<script type="text/javascript">
-Holine.config({plugins:['browser', 'dialog']});
-</script>
+	<div id="area_download"></div>
+	<script type="text/javascript">
+		(function() {
+			var area_download = new maps({
+				'parent' : 'area_download',
+				'colors' : {
+					"0.5" : "#def1ff",
+					"1" : "#c3e6ff",
+					"2" : "#9fd5fc",
+					"3" : "#7ac7ff",
+					"4" : "#50b0f6",
+					"5" : "#2c93df",
+					"100" : "#217fc4"
+				}
+			});
+			area_download
+					.draw({
+						"\u4e0a\u6d77" : {
+							"weight" : "2.64",
+							"content" : "\u4e0a\u6d77<br \/>2.1.8 : 7.07KB<br \/>2.3.3 : 11.07KB<br \/>2.5.2 : 10.20KB<br \/>2.5.3 : 16.26KB<br \/>2.5.7 : 13.11KB"
+						},
+						"\u4e91\u5357" : {
+							"weight" : "2.72",
+							"content" : "\u4e91\u5357<br \/>2.1.8 : 5.81KB<br \/>2.3.3 : 10.30KB<br \/>2.5.2 : 12.04KB<br \/>2.5.3 : 14.70KB<br \/>2.5.7 : 16.52KB"
+						},
+						"\u5317\u4eac" : {
+							"weight" : "2.34",
+							"content" : "\u5317\u4eac<br \/>2.1.8 : 8.52KB<br \/>2.3.3 : 8.26KB<br \/>2.5.2 : 10.58KB<br \/>2.5.3 : 12.65KB<br \/>2.5.7 : 11.12KB"
+						},
+						"\u56db\u5ddd" : {
+							"weight" : "2.53",
+							"content" : "\u56db\u5ddd<br \/>2.1.8 : 7.76KB<br \/>2.3.3 : 9.61KB<br \/>2.5.2 : 9.37KB<br \/>2.5.3 : 15.35KB<br \/>2.5.7 : 13.12KB"
+						},
+						"\u5b81\u590f" : {
+							"weight" : "3.24",
+							"content" : "\u5b81\u590f<br \/>2.1.8 : 5.75KB<br \/>2.3.3 : 30.04KB<br \/>2.5.2 : 9.48KB<br \/>2.5.3 : 14.37KB<br \/>2.5.7 : 11.23KB"
+						},
+						"\u5b89\u5fbd" : {
+							"weight" : "2.82",
+							"content" : "\u5b89\u5fbd<br \/>2.1.8 : 6.55KB<br \/>2.3.3 : 10.98KB<br \/>2.5.2 : 10.80KB<br \/>2.5.3 : 13.57KB<br \/>2.5.7 : 19.75KB"
+						},
+						"\u6c5f\u82cf" : {
+							"weight" : "2.55",
+							"content" : "\u6c5f\u82cf<br \/>2.1.8 : 10.59KB<br \/>2.3.3 : 10.71KB<br \/>2.5.2 : 10.14KB<br \/>2.5.3 : 12.62KB<br \/>2.5.7 : 11.56KB"
+						},
+						"\u6c5f\u897f" : {
+							"weight" : "4.01",
+							"content" : "\u6c5f\u897f<br \/>2.1.8 : 6.63KB<br \/>2.3.3 : 9.48KB<br \/>2.5.2 : 11.03KB<br \/>2.5.3 : 16.36KB<br \/>2.5.7 : 44.09KB"
+						},
+						"\u6cb3\u5357" : {
+							"weight" : "2.70",
+							"content" : "\u6cb3\u5357<br \/>2.1.8 : 5.32KB<br \/>2.3.3 : 9.19KB<br \/>2.5.2 : 11.02KB<br \/>2.5.3 : 17.73KB<br \/>2.5.7 : 15.79KB"
+						},
+						"\u6d59\u6c5f" : {
+							"weight" : "2.43",
+							"content" : "\u6d59\u6c5f<br \/>2.1.8 : 7.33KB<br \/>2.3.3 : 10.41KB<br \/>2.5.2 : 9.20KB<br \/>2.5.3 : 14.33KB<br \/>2.5.7 : 11.73KB"
+						},
+						"\u6e56\u5357" : {
+							"weight" : "3.05",
+							"content" : "\u6e56\u5357<br \/>2.1.8 : 12.97KB<br \/>2.3.3 : 13.25KB<br \/>2.5.2 : 11.89KB<br \/>2.5.3 : 13.37KB<br \/>2.5.7 : 15.12KB"
+						},
+						"\u7518\u8083" : {
+							"weight" : "2.40",
+							"content" : "\u7518\u8083<br \/>2.1.8 : 5.99KB<br \/>2.3.3 : 8.01KB<br \/>2.5.2 : 7.80KB<br \/>2.5.3 : 16.75KB<br \/>2.5.7 : 13.94KB"
+						},
+						"\u798f\u5efa" : {
+							"weight" : "2.34",
+							"content" : "\u798f\u5efa<br \/>2.1.8 : 6.57KB<br \/>2.3.3 : 8.91KB<br \/>2.5.2 : 7.98KB<br \/>2.5.3 : 14.29KB<br \/>2.5.7 : 13.30KB"
+						},
+						"\u897f\u85cf" : {
+							"weight" : "3.73",
+							"content" : "\u897f\u85cf<br \/>2.1.8 : 3.59KB<br \/>2.3.3 : 25.99KB<br \/>2.5.2 : 8.59KB<br \/>2.5.3 : 26.41KB<br \/>2.5.7 : 16.85KB"
+						},
+						"\u91cd\u5e86" : {
+							"weight" : "2.45",
+							"content" : "\u91cd\u5e86<br \/>2.1.8 : 8.09KB<br \/>2.3.3 : 9.75KB<br \/>2.5.2 : 11.30KB<br \/>2.5.3 : 11.54KB<br \/>2.5.7 : 12.86KB"
+						},
+						"\u9752\u6d77" : {
+							"weight" : "4.58",
+							"content" : "\u9752\u6d77<br \/>2.1.8 : 10.05KB<br \/>2.3.3 : 12.43KB<br \/>2.5.2 : 10.59KB<br \/>2.5.3 : 16.06KB<br \/>2.5.7 : 50.84KB"
+						},
+						"\u5185\u8499\u53e4" : {
+							"weight" : "2.73",
+							"content" : "\u5185\u8499\u53e4<br \/>2.1.8 : 8.72KB<br \/>2.3.3 : 9.47KB<br \/>2.5.2 : 10.51KB<br \/>2.5.3 : 17.94KB<br \/>2.5.7 : 13.04KB"
+						},
+						"\u53f0\u6e7e" : {
+							"weight" : "2.57",
+							"content" : "\u53f0\u6e7e<br \/>2.1.8 : 6.11KB<br \/>2.3.3 : 6.52KB<br \/>2.5.2 : 6.37KB<br \/>2.5.3 : 29.02KB<br \/>2.5.7 : 8.15KB"
+						},
+						"\u5409\u6797" : {
+							"weight" : "2.85",
+							"content" : "\u5409\u6797<br \/>2.1.8 : 17.31KB<br \/>2.3.3 : 11.80KB<br \/>2.5.2 : 11.34KB<br \/>2.5.3 : 10.06KB<br \/>2.5.7 : 11.83KB"
+						},
+						"\u5929\u6d25" : {
+							"weight" : "2.78",
+							"content" : "\u5929\u6d25<br \/>2.1.8 : 9.64KB<br \/>2.3.3 : 8.04KB<br \/>2.5.2 : 9.95KB<br \/>2.5.3 : 15.91KB<br \/>2.5.7 : 17.18KB"
+						},
+						"\u5c71\u4e1c" : {
+							"weight" : "2.55",
+							"content" : "\u5c71\u4e1c<br \/>2.1.8 : 6.03KB<br \/>2.3.3 : 10.15KB<br \/>2.5.2 : 8.54KB<br \/>2.5.3 : 14.60KB<br \/>2.5.7 : 16.44KB"
+						},
+						"\u5c71\u897f" : {
+							"weight" : "3.21",
+							"content" : "\u5c71\u897f<br \/>2.1.8 : 6.77KB<br \/>2.3.3 : 14.94KB<br \/>2.5.2 : 11.18KB<br \/>2.5.3 : 18.77KB<br \/>2.5.7 : 18.36KB"
+						},
+						"\u5e7f\u4e1c" : {
+							"weight" : "2.39",
+							"content" : "\u5e7f\u4e1c<br \/>2.1.8 : 5.95KB<br \/>2.3.3 : 9.67KB<br \/>2.5.2 : 9.34KB<br \/>2.5.3 : 14.62KB<br \/>2.5.7 : 12.66KB"
+						},
+						"\u5e7f\u897f" : {
+							"weight" : "2.50",
+							"content" : "\u5e7f\u897f<br \/>2.1.8 : 7.02KB<br \/>2.3.3 : 9.42KB<br \/>2.5.2 : 8.85KB<br \/>2.5.3 : 13.68KB<br \/>2.5.7 : 15.55KB"
+						},
+						"\u65b0\u7586" : {
+							"weight" : "2.47",
+							"content" : "\u65b0\u7586<br \/>2.1.8 : 6.67KB<br \/>2.3.3 : 11.42KB<br \/>2.5.2 : 5.34KB<br \/>2.5.3 : 19.94KB<br \/>2.5.7 : 10.67KB"
+						},
+						"\u6cb3\u5317" : {
+							"weight" : "2.64",
+							"content" : "\u6cb3\u5317<br \/>2.1.8 : 8.04KB<br \/>2.3.3 : 9.31KB<br \/>2.5.2 : 12.57KB<br \/>2.5.3 : 15.59KB<br \/>2.5.7 : 12.17KB"
+						},
+						"\u6d77\u5357" : {
+							"weight" : "2.29",
+							"content" : "\u6d77\u5357<br \/>2.1.8 : 5.14KB<br \/>2.3.3 : 8.90KB<br \/>2.5.2 : 9.62KB<br \/>2.5.3 : 14.26KB<br \/>2.5.7 : 12.12KB"
+						},
+						"\u6e56\u5317" : {
+							"weight" : "3.28",
+							"content" : "\u6e56\u5317<br \/>2.1.8 : 7.98KB<br \/>2.3.3 : 10.48KB<br \/>2.5.2 : 14.53KB<br \/>2.5.3 : 16.14KB<br \/>2.5.7 : 22.54KB"
+						},
+						"\u6fb3\u95e8" : {
+							"weight" : "4.73",
+							"content" : "\u6fb3\u95e8<br \/>2.1.8 : 7.84KB<br \/>2.3.3 : 12.09KB<br \/>2.5.2 : 9.42KB<br \/>2.5.3 : 26.20KB<br \/>2.5.7 : 47.78KB"
+						},
+						"\u8d35\u5dde" : {
+							"weight" : "2.33",
+							"content" : "\u8d35\u5dde<br \/>2.1.8 : 8.25KB<br \/>2.3.3 : 7.44KB<br \/>2.5.2 : 8.80KB<br \/>2.5.3 : 12.05KB<br \/>2.5.7 : 14.41KB"
+						},
+						"\u8fbd\u5b81" : {
+							"weight" : "2.83",
+							"content" : "\u8fbd\u5b81<br \/>2.1.8 : 8.01KB<br \/>2.3.3 : 10.55KB<br \/>2.5.2 : 11.15KB<br \/>2.5.3 : 15.08KB<br \/>2.5.7 : 17.00KB"
+						},
+						"\u9655\u897f" : {
+							"weight" : "3.35",
+							"content" : "\u9655\u897f<br \/>2.1.8 : 9.53KB<br \/>2.3.3 : 8.80KB<br \/>2.5.2 : 12.64KB<br \/>2.5.3 : 16.17KB<br \/>2.5.7 : 26.12KB"
+						},
+						"\u9999\u6e2f" : {
+							"weight" : "3.25",
+							"content" : "\u9999\u6e2f<br \/>2.1.8 : 6.01KB<br \/>2.3.3 : 10.34KB<br \/>2.5.2 : 11.37KB<br \/>2.5.3 : 31.69KB<br \/>2.5.7 : 11.53KB"
+						},
+						"\u9ed1\u9f99\u6c5f" : {
+							"weight" : "4.71",
+							"content" : "\u9ed1\u9f99\u6c5f<br \/>2.1.8 : 52.91KB<br \/>2.3.3 : 5.73KB<br \/>2.5.2 : 12.90KB<br \/>2.5.3 : 17.81KB<br \/>2.5.7 : 13.53KB"
+						},
+						"\u9493\u9c7c\u5c9b" : {
+							"weight" : 0,
+							"content" : "\u9493\u9c7c\u5c9b"
+						}
+					});
+		})();
+	</script>
+
 </body>
 </HTML>

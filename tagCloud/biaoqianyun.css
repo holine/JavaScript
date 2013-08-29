@@ -1,0 +1,28 @@
+body {
+	background: #f5f5f5;
+}
+
+#div1 {
+	position: relative;
+	width: 410px;
+	height: 410px;
+	margin: 20px auto 0;
+	background: url(biaoqianyun.png) no-repeat;
+}
+
+#div1 a {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	font-family: Microsoft YaHei;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px 6px;
+}
+
+#div1 a:hover {
+	border: 1px solid #eeeeee;
+	background: #eeeeee;
+	opacity: 0.8;
+}
