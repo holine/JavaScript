@@ -98,14 +98,5 @@
 		$.browser.addEventListener('resize', function() {
 			$.dialog.resize($.browser.offset.width, $.browser.offset.height);
 		});
-		if (typeof (window.addEventListener) == 'undefined') {
-			window.attachEvent('onresize', function() {
-				$.dialog.resize();
-			});
-		} else {
-			window.addEventListener('resize', function() {
-				$.dialog.resize();
-			}, false);
-		}
 	});
-})(window[Holine.config.variable]);
+})(window[Holine.variable]);

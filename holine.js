@@ -1,4 +1,89 @@
-var Holine = function() {
+var Holine = function(cfg) {
+	if (typeof cfg != 'undefined') {
+		if (typeof cfg.variable != 'undefined') {
+			Holine.variable = cfg.variable;
+		}
+		if (typeof window[Holine.variable] == 'undefined') {
+			window[Holine.variable] = new Holine();
+			window.onload = function() {
+				window[Holine.variable].ready.prototype.onload = true;
+				window[Holine.variable].ready();
+			};
+		}
+		if (typeof cfg.path != 'undefined') {
+			Holine.path = cfg.path;
+		}
+		var plugins = new Array();
+		if (typeof cfg.plugins != 'undefined') {
+			plugins = cfg.plugins;
+		}
+		for ( var i = plugins.length - 1; i > -1; i--) {
+			if (typeof (Holine.plugins[plugins[i]]) == 'undefined') {
+				Holine.plugins[plugins[i]] = {
+					onload : false,
+					depend : new Array(),
+					object : new Object(),
+					init : function() {
+					}
+				};
+				Holine.count++;
+				var script = document.createElement('script');
+				script.type = 'text/javascript';
+				script.charset = 'utf-8';
+				script.src = Holine.path + '/' + plugins[i] + '.js';
+				script.setAttribute('plugin', plugins[i]);
+				script.onload = function() {
+					Holine.count--;
+					Holine.plugins[this.getAttribute('plugin')].onload = true;
+					if(Holine.count == 0){
+						var i = 1;
+						while (i) {
+							i = 0;
+							for ( var j in Holine.plugins) {
+								i++;
+								if (typeof window[Holine.variable][j] == 'undefined') {
+									if (Holine.plugins[j].depend.length == 0) {
+										window[Holine.variable].registerPlugins(j,
+												Holine.plugins[j].object,
+												Holine.plugins[j].init);
+										delete Holine.plugins[j];
+									} else {
+										for ( var k in Holine.plugins[j].depend){
+											if(typeof window[Holine.variable][Holine.plugins[j].depend[i]] != 'undefined'){
+												Holine.plugins[j].depend.spclie(k, 1);
+											}
+										}
+									}
+								} else {
+									delete Holine.plugins[j];
+								}
+							}
+						}
+						window[Holine.variable].ready.prototype.ready = true;
+						window[Holine.variable].ready();
+					}
+				};
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		}
+	}
+};
+Holine.count = 0;
+Holine.plugins = {};
+Holine.path = window.location.href.substr(0, window.location.href
+		.lastIndexOf('/'));
+Holine.variable = typeof ($) == 'undefined' ? '$' : 'holine';
+Holine.registerPlugins = function(plugin, object, init) {
+	Holine.plugins[plugin].object = object;
+	Holine.plugins[plugin].init = init;
+	Holine.plugins[plugin].depend = object.depend;
+	if (object.depend.length) {
+		Holine({
+			plugins : object.depend
+		});
+	} else {
+		window[Holine.variable].registerPlugins(plugin, object, init);
+	}
 };
 Holine.prototype.event = {};
 Holine.prototype.plugins = new Array();
@@ -42,91 +127,28 @@ Holine.prototype.registerPlugins = function(plugin, object, init) {
 		if (typeof init != 'undefined') {
 			init();
 		}
-		for ( var i in Holine.config.plugins) {
-			for ( var j = Holine.config.plugins[i].depend.length - 1; j > -1; j--) {
-				if (Holine.config.plugins[i].depend[j] == plugin) {
-					Holine.config.plugins[i].depend.splice(j, 1);
+		for ( var i in Holine.plugins) {
+			for ( var j = Holine.plugins[i].depend.length - 1; j > -1; j--) {
+				if (Holine.plugins[i].depend[j] == plugin) {
+					Holine.plugins[i].depend.splice(j, 1);
 					break;
 				}
 			}
 		}
 	}
 };
-Holine.config = function(cfg) {
-	if (typeof cfg.variable != 'undefined') {
-		this.config.variable = cfg.variable;
-
-	}
-	if (typeof window[this.config.variable] == 'undefined') {
-		window[this.config.variable] = new Holine();
-	}
-	if (typeof this.path != 'undefined') {
-		this.config.path = cfg.path;
-	}
-	if (typeof cfg.plugin != 'undefined') {
-		this.config.plugins[cfg.plugin].depend = cfg.depend;
-	}
-	var plugins = typeof cfg.plugins == 'undefined' ? (typeof cfg.depend == 'undefined' ? new Array()
-			: cfg.depend)
-			: cfg.plugins;
-	var that = this;
-	for ( var i = plugins.length - 1; i > -1; i--) {
-		if (typeof (Holine.config.plugins[plugins[i]]) == 'undefined') {
-			Holine.config.plugins[plugins[i]] = {
-				onload : false,
-				depend : {}
-			};
+Holine.prototype.ready = function(func) {
+	if (typeof (func) == 'undefined') {
+		if (window[Holine.variable].ready.prototype.onload
+				&& window[Holine.variable].ready.prototype.ready) {
+			while (window[Holine.variable].ready.prototype.plugins.length) {
+				window[Holine.variable].ready.prototype.plugins.shift()();
+			}
 		}
-		this.count++;
-		var script = document.createElement('script');
-		script.type = 'text/javascript';
-		script.charset = 'utf-8';
-		script.src = this.config.path + '/' + plugins[i] + '.js';
-		script.setAttribute('plugin', plugins[i]);
-		if (typeof script.onload != 'undefined') {
-			script.onload = function() {
-				that.config.count--;
-				Holine.config.plugins[this.getAttribute('plugin')].onload = true;
-			};
-		} else {
-		}
-		document.body.appendChild(script);
-	}
-};
-Holine.registerPlugins = function(plugin, object, init) {
-	Holine.config.plugins[plugin].object = object;
-	Holine.config.plugins[plugin].init = init;
-	if (object.depend.length) {
-		this.config({
-			plugin : plugin,
-			depend : object.depend
-		});
 	} else {
-		window[this.config.variable].registerPlugins(plugin, object, init);
-	}
-	if (this.config.count == 0) {
-		setTimeout(
-				function() {
-					var i = 1;
-					while (i) {
-						i = 0;
-						for ( var j in Holine.config.plugins) {
-							i++;
-							if (typeof window[Holine.config.variable][j] == 'undefined') {
-								if(Holine.config.plugins[j].depend.length == 0){
-									window[Holine.config.variable].registerPlugins(j, Holine.config.plugins[j].object, Holine.config.plugins[j].init);
-									delete Holine.config.plugins[j];
-								}
-							} else {
-								delete Holine.config.plugins[j];
-							}
-						}
-					}
-				}, 100);
+		window[Holine.variable].ready.prototype.plugins.push(func);
 	}
 };
-Holine.config.count = 0;
-Holine.config.plugins = {};
-Holine.config.path = window.location.href.substr(0, window.location.href
-		.lastIndexOf('/'));
-Holine.config.variable = typeof ($) == 'undefined' ? '$' : 'holine';
+Holine.prototype.ready.prototype.onload = false;
+Holine.prototype.ready.prototype.ready = false;
+Holine.prototype.ready.prototype.plugins = new Array();

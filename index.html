@@ -1,176 +1,53 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<HTML>
-<HEAD>
-<meta http-equiv=Content-Type content="text/html;charset=utf-8">
-<script type="text/javascript" src="map.js"></script>
-<style type="text/css">
-body {
-	padding: 0;
-	margin: 0;
-}
-</style>
-</HEAD>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta content="initial-scale=1, minimum-scale=1, width=device-width"
+	name="viewport">
+<title>Holine笔记</title>
+<link href="index.css" rel="stylesheet">
+<script type="text/javascript">(function(){(function(){function d(a){this.t={};this.tick=function(a,c,b){b=void 0!=b?b:(new Date).getTime();this.t[a]=[b,c]};this.tick("start",null,a)}var a=new d;window.jstiming={Timer:d,load:a};if(window.performance&&window.performance.timing){var a=window.performance.timing,c=window.jstiming.load,b=a.navigationStart,a=a.responseStart;0<b&&a>=b&&(c.tick("_wtsrt",void 0,b),c.tick("wtsrt_","_wtsrt",a),c.tick("tbsd_","wtsrt_"))}try{a=null,window.chrome&&window.chrome.csi&&(a=Math.floor(window.chrome.csi().pageT),
+c&&0<b&&(c.tick("_tbnd",void 0,window.chrome.csi().startE),c.tick("tbnd_","_tbnd",b))),null==a&&window.gtbExternal&&(a=window.gtbExternal.pageT()),null==a&&window.external&&(a=window.external.pageT,c&&0<b&&(c.tick("_tbnd",void 0,window.external.startE),c.tick("tbnd_","_tbnd",b))),a&&(window.jstiming.pt=a)}catch(e){}})();})();
+</script>
+</head>
 <body>
-	<div id="area_download"></div>
-	<script type="text/javascript">
-		(function() {
-			var area_download = new maps({
-				'parent' : 'area_download',
-				'colors' : {
-					"0.5" : "#def1ff",
-					"1" : "#c3e6ff",
-					"2" : "#9fd5fc",
-					"3" : "#7ac7ff",
-					"4" : "#50b0f6",
-					"5" : "#2c93df",
-					"100" : "#217fc4"
-				}
-			});
-			area_download
-					.draw({
-						"\u4e0a\u6d77" : {
-							"weight" : "2.64",
-							"content" : "\u4e0a\u6d77<br \/>2.1.8 : 7.07KB<br \/>2.3.3 : 11.07KB<br \/>2.5.2 : 10.20KB<br \/>2.5.3 : 16.26KB<br \/>2.5.7 : 13.11KB"
-						},
-						"\u4e91\u5357" : {
-							"weight" : "2.72",
-							"content" : "\u4e91\u5357<br \/>2.1.8 : 5.81KB<br \/>2.3.3 : 10.30KB<br \/>2.5.2 : 12.04KB<br \/>2.5.3 : 14.70KB<br \/>2.5.7 : 16.52KB"
-						},
-						"\u5317\u4eac" : {
-							"weight" : "2.34",
-							"content" : "\u5317\u4eac<br \/>2.1.8 : 8.52KB<br \/>2.3.3 : 8.26KB<br \/>2.5.2 : 10.58KB<br \/>2.5.3 : 12.65KB<br \/>2.5.7 : 11.12KB"
-						},
-						"\u56db\u5ddd" : {
-							"weight" : "2.53",
-							"content" : "\u56db\u5ddd<br \/>2.1.8 : 7.76KB<br \/>2.3.3 : 9.61KB<br \/>2.5.2 : 9.37KB<br \/>2.5.3 : 15.35KB<br \/>2.5.7 : 13.12KB"
-						},
-						"\u5b81\u590f" : {
-							"weight" : "3.24",
-							"content" : "\u5b81\u590f<br \/>2.1.8 : 5.75KB<br \/>2.3.3 : 30.04KB<br \/>2.5.2 : 9.48KB<br \/>2.5.3 : 14.37KB<br \/>2.5.7 : 11.23KB"
-						},
-						"\u5b89\u5fbd" : {
-							"weight" : "2.82",
-							"content" : "\u5b89\u5fbd<br \/>2.1.8 : 6.55KB<br \/>2.3.3 : 10.98KB<br \/>2.5.2 : 10.80KB<br \/>2.5.3 : 13.57KB<br \/>2.5.7 : 19.75KB"
-						},
-						"\u6c5f\u82cf" : {
-							"weight" : "2.55",
-							"content" : "\u6c5f\u82cf<br \/>2.1.8 : 10.59KB<br \/>2.3.3 : 10.71KB<br \/>2.5.2 : 10.14KB<br \/>2.5.3 : 12.62KB<br \/>2.5.7 : 11.56KB"
-						},
-						"\u6c5f\u897f" : {
-							"weight" : "4.01",
-							"content" : "\u6c5f\u897f<br \/>2.1.8 : 6.63KB<br \/>2.3.3 : 9.48KB<br \/>2.5.2 : 11.03KB<br \/>2.5.3 : 16.36KB<br \/>2.5.7 : 44.09KB"
-						},
-						"\u6cb3\u5357" : {
-							"weight" : "2.70",
-							"content" : "\u6cb3\u5357<br \/>2.1.8 : 5.32KB<br \/>2.3.3 : 9.19KB<br \/>2.5.2 : 11.02KB<br \/>2.5.3 : 17.73KB<br \/>2.5.7 : 15.79KB"
-						},
-						"\u6d59\u6c5f" : {
-							"weight" : "2.43",
-							"content" : "\u6d59\u6c5f<br \/>2.1.8 : 7.33KB<br \/>2.3.3 : 10.41KB<br \/>2.5.2 : 9.20KB<br \/>2.5.3 : 14.33KB<br \/>2.5.7 : 11.73KB"
-						},
-						"\u6e56\u5357" : {
-							"weight" : "3.05",
-							"content" : "\u6e56\u5357<br \/>2.1.8 : 12.97KB<br \/>2.3.3 : 13.25KB<br \/>2.5.2 : 11.89KB<br \/>2.5.3 : 13.37KB<br \/>2.5.7 : 15.12KB"
-						},
-						"\u7518\u8083" : {
-							"weight" : "2.40",
-							"content" : "\u7518\u8083<br \/>2.1.8 : 5.99KB<br \/>2.3.3 : 8.01KB<br \/>2.5.2 : 7.80KB<br \/>2.5.3 : 16.75KB<br \/>2.5.7 : 13.94KB"
-						},
-						"\u798f\u5efa" : {
-							"weight" : "2.34",
-							"content" : "\u798f\u5efa<br \/>2.1.8 : 6.57KB<br \/>2.3.3 : 8.91KB<br \/>2.5.2 : 7.98KB<br \/>2.5.3 : 14.29KB<br \/>2.5.7 : 13.30KB"
-						},
-						"\u897f\u85cf" : {
-							"weight" : "3.73",
-							"content" : "\u897f\u85cf<br \/>2.1.8 : 3.59KB<br \/>2.3.3 : 25.99KB<br \/>2.5.2 : 8.59KB<br \/>2.5.3 : 26.41KB<br \/>2.5.7 : 16.85KB"
-						},
-						"\u91cd\u5e86" : {
-							"weight" : "2.45",
-							"content" : "\u91cd\u5e86<br \/>2.1.8 : 8.09KB<br \/>2.3.3 : 9.75KB<br \/>2.5.2 : 11.30KB<br \/>2.5.3 : 11.54KB<br \/>2.5.7 : 12.86KB"
-						},
-						"\u9752\u6d77" : {
-							"weight" : "4.58",
-							"content" : "\u9752\u6d77<br \/>2.1.8 : 10.05KB<br \/>2.3.3 : 12.43KB<br \/>2.5.2 : 10.59KB<br \/>2.5.3 : 16.06KB<br \/>2.5.7 : 50.84KB"
-						},
-						"\u5185\u8499\u53e4" : {
-							"weight" : "2.73",
-							"content" : "\u5185\u8499\u53e4<br \/>2.1.8 : 8.72KB<br \/>2.3.3 : 9.47KB<br \/>2.5.2 : 10.51KB<br \/>2.5.3 : 17.94KB<br \/>2.5.7 : 13.04KB"
-						},
-						"\u53f0\u6e7e" : {
-							"weight" : "2.57",
-							"content" : "\u53f0\u6e7e<br \/>2.1.8 : 6.11KB<br \/>2.3.3 : 6.52KB<br \/>2.5.2 : 6.37KB<br \/>2.5.3 : 29.02KB<br \/>2.5.7 : 8.15KB"
-						},
-						"\u5409\u6797" : {
-							"weight" : "2.85",
-							"content" : "\u5409\u6797<br \/>2.1.8 : 17.31KB<br \/>2.3.3 : 11.80KB<br \/>2.5.2 : 11.34KB<br \/>2.5.3 : 10.06KB<br \/>2.5.7 : 11.83KB"
-						},
-						"\u5929\u6d25" : {
-							"weight" : "2.78",
-							"content" : "\u5929\u6d25<br \/>2.1.8 : 9.64KB<br \/>2.3.3 : 8.04KB<br \/>2.5.2 : 9.95KB<br \/>2.5.3 : 15.91KB<br \/>2.5.7 : 17.18KB"
-						},
-						"\u5c71\u4e1c" : {
-							"weight" : "2.55",
-							"content" : "\u5c71\u4e1c<br \/>2.1.8 : 6.03KB<br \/>2.3.3 : 10.15KB<br \/>2.5.2 : 8.54KB<br \/>2.5.3 : 14.60KB<br \/>2.5.7 : 16.44KB"
-						},
-						"\u5c71\u897f" : {
-							"weight" : "3.21",
-							"content" : "\u5c71\u897f<br \/>2.1.8 : 6.77KB<br \/>2.3.3 : 14.94KB<br \/>2.5.2 : 11.18KB<br \/>2.5.3 : 18.77KB<br \/>2.5.7 : 18.36KB"
-						},
-						"\u5e7f\u4e1c" : {
-							"weight" : "2.39",
-							"content" : "\u5e7f\u4e1c<br \/>2.1.8 : 5.95KB<br \/>2.3.3 : 9.67KB<br \/>2.5.2 : 9.34KB<br \/>2.5.3 : 14.62KB<br \/>2.5.7 : 12.66KB"
-						},
-						"\u5e7f\u897f" : {
-							"weight" : "2.50",
-							"content" : "\u5e7f\u897f<br \/>2.1.8 : 7.02KB<br \/>2.3.3 : 9.42KB<br \/>2.5.2 : 8.85KB<br \/>2.5.3 : 13.68KB<br \/>2.5.7 : 15.55KB"
-						},
-						"\u65b0\u7586" : {
-							"weight" : "2.47",
-							"content" : "\u65b0\u7586<br \/>2.1.8 : 6.67KB<br \/>2.3.3 : 11.42KB<br \/>2.5.2 : 5.34KB<br \/>2.5.3 : 19.94KB<br \/>2.5.7 : 10.67KB"
-						},
-						"\u6cb3\u5317" : {
-							"weight" : "2.64",
-							"content" : "\u6cb3\u5317<br \/>2.1.8 : 8.04KB<br \/>2.3.3 : 9.31KB<br \/>2.5.2 : 12.57KB<br \/>2.5.3 : 15.59KB<br \/>2.5.7 : 12.17KB"
-						},
-						"\u6d77\u5357" : {
-							"weight" : "2.29",
-							"content" : "\u6d77\u5357<br \/>2.1.8 : 5.14KB<br \/>2.3.3 : 8.90KB<br \/>2.5.2 : 9.62KB<br \/>2.5.3 : 14.26KB<br \/>2.5.7 : 12.12KB"
-						},
-						"\u6e56\u5317" : {
-							"weight" : "3.28",
-							"content" : "\u6e56\u5317<br \/>2.1.8 : 7.98KB<br \/>2.3.3 : 10.48KB<br \/>2.5.2 : 14.53KB<br \/>2.5.3 : 16.14KB<br \/>2.5.7 : 22.54KB"
-						},
-						"\u6fb3\u95e8" : {
-							"weight" : "4.73",
-							"content" : "\u6fb3\u95e8<br \/>2.1.8 : 7.84KB<br \/>2.3.3 : 12.09KB<br \/>2.5.2 : 9.42KB<br \/>2.5.3 : 26.20KB<br \/>2.5.7 : 47.78KB"
-						},
-						"\u8d35\u5dde" : {
-							"weight" : "2.33",
-							"content" : "\u8d35\u5dde<br \/>2.1.8 : 8.25KB<br \/>2.3.3 : 7.44KB<br \/>2.5.2 : 8.80KB<br \/>2.5.3 : 12.05KB<br \/>2.5.7 : 14.41KB"
-						},
-						"\u8fbd\u5b81" : {
-							"weight" : "2.83",
-							"content" : "\u8fbd\u5b81<br \/>2.1.8 : 8.01KB<br \/>2.3.3 : 10.55KB<br \/>2.5.2 : 11.15KB<br \/>2.5.3 : 15.08KB<br \/>2.5.7 : 17.00KB"
-						},
-						"\u9655\u897f" : {
-							"weight" : "3.35",
-							"content" : "\u9655\u897f<br \/>2.1.8 : 9.53KB<br \/>2.3.3 : 8.80KB<br \/>2.5.2 : 12.64KB<br \/>2.5.3 : 16.17KB<br \/>2.5.7 : 26.12KB"
-						},
-						"\u9999\u6e2f" : {
-							"weight" : "3.25",
-							"content" : "\u9999\u6e2f<br \/>2.1.8 : 6.01KB<br \/>2.3.3 : 10.34KB<br \/>2.5.2 : 11.37KB<br \/>2.5.3 : 31.69KB<br \/>2.5.7 : 11.53KB"
-						},
-						"\u9ed1\u9f99\u6c5f" : {
-							"weight" : "4.71",
-							"content" : "\u9ed1\u9f99\u6c5f<br \/>2.1.8 : 52.91KB<br \/>2.3.3 : 5.73KB<br \/>2.5.2 : 12.90KB<br \/>2.5.3 : 17.81KB<br \/>2.5.7 : 13.53KB"
-						},
-						"\u9493\u9c7c\u5c9b" : {
-							"weight" : 0,
-							"content" : "\u9493\u9c7c\u5c9b"
-						}
-					});
-		})();
-	</script>
-
+	<header></header>
+	<main>
+	<div>
+		<h1>您需要登陆后才能使用Holine笔记</h1>
+		<form action="http://www.google.com.hk/search" method="get">
+			<label for="search">在 Google 上搜索：</label>
+			<input type="text" id="search" name="q" placeholder="登陆密码">
+			<input type="hidden" name="channel" value="linkdoctor">
+			<button type="submit" onclick="javascript:redirect(this.form)">
+				<span>登陆</span>
+			</button>
+		</form>
+		<script type="text/javascript">function redirect(form) {clkb("btnG", escape(document.getElementById("search").value));form.submit();}</script>
+	</div>
+	</main>
+	<footer>
+	<ul>
+		<li dir="ltr">
+			<a href="http://www.google.com.hk"
+				onmousedown="return rwctrd(this,'ft','2','http://www.google.com/url?sa=D&amp;q=http://www.google.com.hk&amp;usg=AFQjCNG_lDweoxf8xU_RH3ysnG1GDzsQwg');">Google</a>
+		</li>
+		<li>
+			<a href="http://www.google.com/support/chrome?hl=zh-CN"
+				onmousedown="return rwctrd(this,'ft','0','http://www.google.com/url?sa=D&amp;q=http://www.google.com/support/chrome%3Fhl%3Dzh-CN&amp;usg=AFQjCNGvFsCNb_EZq2RfVLeQUGT1S62iWQ');">Google
+				Chrome 帮助</a>
+		</li>
+		<li>
+			<a
+				href="http://www.google.com/support/chrome/bin/answer.py?answer=95671&amp;hl=zh-CN"
+				onmousedown="return rwctrd(this,'ft','1','http://www.google.com/url?sa=D&amp;q=http://www.google.com/support/chrome/bin/answer.py%3Fanswer%3D95671%26hl%3Dzh-CN&amp;usg=AFQjCNEjpVGtrILf28DIeSd7cAkUHt6fMg');">为何会出现这个页面？</a>
+		</li>
+	</ul>
+	</footer>
+	<script type="text/javascript">function clk(el,ct,cd) {if(document.images) {(new Image()).src="http://linkhelp.clients.google.com/tbproxy/lh/url?sa=T" +"&q="+"notes.holine.net" +"&usg=" + "AFQjCNFA_oqtvshoVb5nhjbHLB4OCSrPLw" +"&ct=" + ct +"&cd=" + cd +"&fp=6561018567567024416" +"&ei=ch4xUvfxA8H5kAXwtYCYDg" +"&url="+escape(el.href)+"&hl=zh-CN" +"&sourceid=chrome" +"&error=connectionfailure" +"&pref=SUQ9Yzg0MTRiMzQwODZjNzNkMzpVPTMyOTU2YTI0NDQ0ZTk4YjM6TEQ9emgtQ046Tlc9MTpUTT0xMzc2OTkyNDQyOkxNPTEzNzg3MjE1MTE6Uz1sZ1lkNkw1Q0VsUy1LUDFD" +"&cr=CN" +"&xi=";}return true;}function rwrd(el, lnk){el.href= lnk;el.onmousedown="";return true;}function rwctrd(el,ct,cd,lnk){clk(el, ct, cd);rwrd(el, lnk);}function clkb(ct,sq) {if(document.images) {(new Image()).src="http://linkhelp.clients.google.com/tbproxy/lh/url?sa=T" +"&q="+"notes.holine.net" +"&usg=" + "AFQjCNFA_oqtvshoVb5nhjbHLB4OCSrPLw" +"&ct=" + ct +"&cd=0&sq=" + sq +"&fp=6561018567567024416" +"&ei=ch4xUvfxA8H5kAXwtYCYDg" +"&hl=zh-CN" +"&sourceid=chrome" +"&error=connectionfailure" +"&pref=SUQ9Yzg0MTRiMzQwODZjNzNkMzpVPTMyOTU2YTI0NDQ0ZTk4YjM6TEQ9emgtQ046Tlc9MTpUTT0xMzc2OTkyNDQyOkxNPTEzNzg3MjE1MTE6Uz1sZ1lkNkw1Q0VsUy1LUDFD" +"&cr=CN" +"&xi=";}return true;}function onLoad() {try {var loadTimer = window.jstiming.load;loadTimer["name"] = "opt";loadTimer.tick("ol");window.jstiming.report(loadTimer, { e: "" });} catch (err) { }}if(window.jstiming){window.jstiming.a={};window.jstiming.b=1;var m=function(c,b,e){var a=c.t[b],g=c.t.start;if(a&&(g||e))return a=c.t[b][0],g=void 0!=e?e:g[0],a-g},p=function(c,b,e){var a="";window.jstiming.pt&&(a+="&srt="+window.jstiming.pt,delete window.jstiming.pt);try{window.external&&window.external.tran?a+="&tran="+window.external.tran:window.gtbExternal&&window.gtbExternal.tran?a+="&tran="+window.gtbExternal.tran():window.chrome&&window.chrome.csi&&(a+="&tran="+window.chrome.csi().tran)}catch(g){}var d=
+window.chrome;if(d&&(d=d.loadTimes)){d().wasFetchedViaSpdy&&(a+="&p=s");if(d().wasNpnNegotiated){var a=a+"&npn=1",f=d().npnNegotiatedProtocol;f&&(a+="&npnv="+(encodeURIComponent||escape)(f))}d().wasAlternateProtocolAvailable&&(a+="&apa=1")}var k=c.t,q=k.start,d=[],f=[],h;for(h in k)if("start"!=h&&0!=h.indexOf("_")){var l=k[h][1];l?k[l]&&f.push(h+"."+m(c,h,k[l][0])):q&&d.push(h+"."+m(c,h))}delete k.start;if(b)for(var n in b)a+="&"+n+"="+b[n];(b=e)||(b="https:"==document.location.protocol?"https://csi.gstatic.com/csi":
+"http://csi.gstatic.com/csi");return c=[b,"?v=3","&s="+(window.jstiming.sn||"linkdoctor")+"&action=",c.name,f.length?"&it="+f.join(","):"",a,"&rt=",d.join(",")].join("")},r=function(c,b,e){c=p(c,b,e);if(!c)return"";b=new Image;var a=window.jstiming.b++;window.jstiming.a[a]=b;b.onload=b.onerror=function(){window.jstiming&&delete window.jstiming.a[a]};b.src=c;b=null;return c};window.jstiming.report=function(c,b,e){if("prerender"==document.webkitVisibilityState){var a="webkitvisibilitychange",g=!1,d=
+function(){if(!g){b?b.prerender="1":b={prerender:"1"};var f;"prerender"==document.webkitVisibilityState?f=!1:(r(c,b,e),f=!0);f&&(g=!0,document.removeEventListener(a,d,!1))}};document.addEventListener(a,d,!1);return""}return r(c,b,e)}};
+</script>
 </body>
-</HTML>
+</html>
