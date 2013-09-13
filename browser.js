@@ -7,16 +7,14 @@
 				that.onresize();
 			});
 			window.attachEvent('onload', function() {
-				that.size();
-				that.trigger('resize');
+				that.trigger('load');
 			});
 		} else {
 			window.addEventListener('resize', function() {
 				that.onresize();
 			}, false);
 			window.addEventListener('load', function() {
-				that.size();
-				that.trigger('resize');
+				that.trigger('load');
 			}, false);
 		}
 	};
@@ -68,6 +66,10 @@
 			that.size();
 			that.trigger('resize');
 		}, this.delay);
+	};
+	Browser.prototype.onload = function() {
+		this.size();
+		that.trigger('load');
 	};
 	Holine.registerPlugins('browser', Browser);
 })(window[Holine.variable]);
