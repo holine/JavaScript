@@ -49,6 +49,10 @@
 		width:100%;
 		
 	}
+	footer{
+	display: block;position: relative
+	}
+	
 	ul {
 		background: #fff;
 		border-top: 1px solid #e4e4e4;

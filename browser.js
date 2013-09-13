@@ -59,6 +59,7 @@
 			width:0,
 			height:0
 	};
+	Browser.prototype.delay = 1000;
 	Browser.prototype.onresize = function() {
 		var that = this;
 		clearTimeout(this.setIntervalHandle);
@@ -66,7 +67,7 @@
 			clearTimeout (that.setIntervalHandle);
 			that.size();
 			that.trigger('resize');
-		}, 1000);
+		}, this.delay);
 	};
 	Holine.registerPlugins('browser', Browser);
 })(window[Holine.variable]);

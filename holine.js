@@ -5,10 +5,10 @@ var Holine = function(cfg) {
 		}
 		if (typeof window[Holine.variable] == 'undefined') {
 			window[Holine.variable] = new Holine();
-			window.onload = function() {
-				window[Holine.variable].ready.prototype.onload = true;
+			Holine.addEventListener('load', function() {
+				window[Holine.variable].ready.onload = true;
 				window[Holine.variable].ready();
-			};
+			}, false);
 		}
 		if (typeof cfg.path != 'undefined') {
 			Holine.path = cfg.path;
@@ -20,7 +20,6 @@ var Holine = function(cfg) {
 		for ( var i = plugins.length - 1; i > -1; i--) {
 			if (typeof (Holine.plugins[plugins[i]]) == 'undefined') {
 				Holine.plugins[plugins[i]] = {
-					onload : false,
 					depend : new Array(),
 					object : new Object(),
 					init : function() {
@@ -31,36 +30,10 @@ var Holine = function(cfg) {
 				script.type = 'text/javascript';
 				script.charset = 'utf-8';
 				script.src = Holine.path + '/' + plugins[i] + '.js';
-				script.setAttribute('plugin', plugins[i]);
 				script.onload = function() {
 					Holine.count--;
-					Holine.plugins[this.getAttribute('plugin')].onload = true;
-					if(Holine.count == 0){
-						var i = 1;
-						while (i) {
-							i = 0;
-							for ( var j in Holine.plugins) {
-								i++;
-								if (typeof window[Holine.variable][j] == 'undefined') {
-									if (Holine.plugins[j].depend.length == 0) {
-										window[Holine.variable].registerPlugins(j,
-												Holine.plugins[j].object,
-												Holine.plugins[j].init);
-										delete Holine.plugins[j];
-									} else {
-										for ( var k in Holine.plugins[j].depend){
-											if(typeof window[Holine.variable][Holine.plugins[j].depend[i]] != 'undefined'){
-												Holine.plugins[j].depend.spclie(k, 1);
-											}
-										}
-									}
-								} else {
-									delete Holine.plugins[j];
-								}
-							}
-						}
-						window[Holine.variable].ready.prototype.ready = true;
-						window[Holine.variable].ready();
+					if (Holine.count == 0) {
+						Holine.onload();
 					}
 				};
 				document.getElementsByTagName('head')[0].appendChild(script);
@@ -70,9 +43,33 @@ var Holine = function(cfg) {
 };
 Holine.count = 0;
 Holine.plugins = {};
-Holine.path = window.location.href.substr(0, window.location.href
-		.lastIndexOf('/'));
+Holine.path = location.href.substr(0, location.href.lastIndexOf('/'));
 Holine.variable = typeof ($) == 'undefined' ? '$' : 'holine';
+Holine.onload = function() {
+	do {
+		var i = 0;
+		for ( var j in Holine.plugins) {
+			i++;
+			if (typeof window[Holine.variable][j] == 'undefined') {
+				if (Holine.plugins[j].depend.length == 0) {
+					window[Holine.variable].registerPlugins(j,
+							Holine.plugins[j].object, Holine.plugins[j].init);
+					delete Holine.plugins[j];
+				} else {
+					for ( var k = Holine.plugins[j].depend.length - 1; k > -1; k--) {
+						if (typeof window[Holine.variable][Holine.plugins[j].depend[k]] != 'undefined') {
+							Holine.plugins[j].depend.spclie(k, 1);
+						}
+					}
+				}
+			} else {
+				delete Holine.plugins[j];
+			}
+		}
+	} while (i);
+	window[Holine.variable].ready.ready = true;
+	window[Holine.variable].ready();
+};
 Holine.registerPlugins = function(plugin, object, init) {
 	Holine.plugins[plugin].object = object;
 	Holine.plugins[plugin].init = init;
@@ -83,6 +80,13 @@ Holine.registerPlugins = function(plugin, object, init) {
 		});
 	} else {
 		window[Holine.variable].registerPlugins(plugin, object, init);
+	}
+};
+Holine.addEventListener = function(event, action) {
+	if (typeof (window.addEventListener) == 'undefined') {
+		window.attachEvent('on' + event, action);
+	} else {
+		window.addEventListener(event, action, false);
 	}
 };
 Holine.prototype.event = {};
@@ -139,16 +143,16 @@ Holine.prototype.registerPlugins = function(plugin, object, init) {
 };
 Holine.prototype.ready = function(func) {
 	if (typeof (func) == 'undefined') {
-		if (window[Holine.variable].ready.prototype.onload
-				&& window[Holine.variable].ready.prototype.ready) {
-			while (window[Holine.variable].ready.prototype.plugins.length) {
-				window[Holine.variable].ready.prototype.plugins.shift()();
+		if (window[Holine.variable].ready.onload
+				&& window[Holine.variable].ready.ready) {
+			while (window[Holine.variable].ready.plugins.length) {
+				window[Holine.variable].ready.plugins.shift()();
 			}
 		}
 	} else {
-		window[Holine.variable].ready.prototype.plugins.push(func);
+		window[Holine.variable].ready.plugins.push(func);
 	}
 };
-Holine.prototype.ready.prototype.onload = false;
-Holine.prototype.ready.prototype.ready = false;
-Holine.prototype.ready.prototype.plugins = new Array();
+Holine.prototype.ready.onload = false;
+Holine.prototype.ready.ready = false;
+Holine.prototype.ready.plugins = new Array();

@@ -8,20 +8,27 @@
 <link href="index.css" rel="stylesheet">
 <script type="text/javascript" src="holine.js"></script>
 <script type="text/javascript">
-Holine({plugins:['browser', 'dialog']});
+Holine({plugins:['browser', 'dialog', 'ajax']});
 </script>
 </head>
 <body>
 	<header>Holine笔记</header>
-	<main>
-	<textarea type="text" id="search" name="q" placeholder="亲，輸入些內容吧……"></textarea></main>
-	<footer style="display:none;">
+	<main> <textarea type="text" id="search" name="q"
+		placeholder="亲，輸入些內容吧……" style="display: none;"><?php var_export($_GET);?></textarea></main>
+	<footer>
 	<ul>
 		<li dir="ltr">Copyright © 2013 Holine Studio All rights reserved</li>
 	</ul>
 	</footer>
 	<script type="text/javascript">
-	$.ready(function(){$.browser.addEventListener('resize', function(){document.getElementsByTagName('main')[0].style.height = $.browser.size().height - document.getElementsByTagName('header')[0].offsetHeight - document.getElementsByTagName('footer')[0].offsetHeight - 40 + 'px'; document.getElementsByTagName('textarea')[0].style.width = document.getElementsByTagName('main')[0].offsetWidth - 22 + 'px'; document.getElementsByTagName('textarea')[0].style.height = document.getElementsByTagName('main')[0].offsetHeight - 14 + 'px';})});
+	$.ready(function(){
+		$.browser.addEventListener('resize', function(){
+			var textarea = document.getElementsByTagName('textarea')[0];
+			textarea.style.display = 'none';
+			textarea.style.height = $.browser.client.height - document.getElementsByTagName('header')[0].offsetHeight - document.getElementsByTagName('footer')[0].offsetHeight - 56 + 'px';
+			textarea.style.width = $.browser.client.width - 82 + 'px';
+			textarea.style.display = '';
+			})});
 </script>
 </body>
 </html>
